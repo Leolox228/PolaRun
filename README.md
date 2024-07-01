@@ -13,9 +13,4 @@ cd PolaRun
 pip install -r requirements.txt
 ```
 
-Далее добавим polarun в path:
-```bah
-python add_to_path.py
-```
-
 Если вам нужны proxy, то для их спользование пишите: polarun --proxy
