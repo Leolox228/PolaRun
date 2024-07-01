@@ -16,7 +16,7 @@ pip install -r requirements.txt
 Запускаем код:
 
 ```bah
-python polarun.py
+py polarun.py
 ```
 
 Далее добавим polarun в path:
