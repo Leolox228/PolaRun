@@ -10,7 +10,7 @@ cd PolaRun
 Потом надо установить зависимости:
 
 ```bah
-pip install -R requirements.txt
+pip install -r requirements.txt
 ```
 
 Далее добавим polarun в path:
