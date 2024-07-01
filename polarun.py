@@ -152,8 +152,7 @@ while True:
     res = ""
     payload1 = payload.copy()
     payload1["contents"].insert(len(payload1["contents"]) - 1, {"role": "user", "parts": {"text": info}})
-    if proxies["https"] != None:
-        response = requests.post(url, headers=headers, json=payload1, proxies=proxies, stream=True)
+    response = requests.post(url, headers=headers, json=payload1, proxies=proxies, stream=True)
     
     if response.status_code == 429:
         url = f'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:streamGenerateContent?alt=sse&key={api_key}'
