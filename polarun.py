@@ -18,7 +18,7 @@ if not os.path.exists('.env'):
 if not os.path.exists('polarun.bat'):
     with open('polarun.bat', 'w') as f:
         f.write(f"""cd PolaRun
-polarun.py""")
+python polarun.py""")
     print("Файл polarun.bat создан.")
 
 def get_api_key():
