@@ -15,12 +15,6 @@ if not os.path.exists('.env'):
             f.write("# This file contains environment variables for the applications\n")
         print("Файл .env создан.")
 
-if not os.path.exists('polarun.bat'):
-    with open('polarun.bat', 'w') as f:
-        f.write(f"""cd PolaRun
-python polarun.py""")
-    print("Файл polarun.bat создан.")
-
 def get_api_key():
     load_dotenv() 
     api_key = os.getenv('API_KEY')
@@ -172,4 +166,5 @@ while True:
         code(k)             
     else:
         print(f"Error: {response.status_code} - {response.text}")
+
 
