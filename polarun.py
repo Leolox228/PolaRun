@@ -15,6 +15,17 @@ if not os.path.exists('.env'):
             f.write("# This file contains environment variables for the applications\n")
         print("Файл .env создан.")
 
+if not os.path.exists(os.path.expanduser("~\\PolaRun") + '\\polarun.bat'):
+    c = input("Если хотите использовать прокси, то введите y/n: ")
+    with open('polarun.bat', 'w') as f:
+        if c == 'y':
+            f.write(f"""cd PolaRun
+python {os.path.expanduser("~\\PolaRun") + '\\polarun.py --proxy'}""")
+        else:
+            f.write(f"""cd PolaRun
+python {os.path.expanduser("~\\PolaRun") + '\\polarun.py'}""")
+    print("Файл polarun.bat создан.")
+
 def get_api_key():
     load_dotenv() 
     api_key = os.getenv('API_KEY')
@@ -166,5 +177,8 @@ while True:
         code(k)             
     else:
         print(f"Error: {response.status_code} - {response.text}")
+
+
+
 
 
