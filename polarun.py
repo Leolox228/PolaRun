@@ -20,10 +20,10 @@ if not os.path.exists(os.path.expanduser("~\\PolaRun") + '\\polarun.bat'):
     with open(os.path.expanduser("~\\PolaRun") + '\\polarun.bat', 'w') as f:
         if c == 'y':
             f.write(f"""cd {os.path.expanduser("~\\PolaRun")}
-python {os.path.expanduser("~\\PolaRun") + '\\polarun.py --proxy'}""")
+py {os.path.expanduser("~\\PolaRun") + '\\polarun.py --proxy'}""")
         else:
             f.write(f"""cd {os.path.expanduser("~\\PolaRun")}
-python {os.path.expanduser("~\\PolaRun") + '\\polarun.py'}""")
+py {os.path.expanduser("~\\PolaRun") + '\\polarun.py'}""")
     print("Файл polarun.bat создан.")
 
 
