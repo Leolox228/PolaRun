@@ -1,11 +1,8 @@
 import requests
-import json
 import re
 import io
 import sys
-import subprocess
 import platform
-import importlib
 import os
 from dotenv import load_dotenv, set_key
 import argparse
@@ -121,7 +118,7 @@ def get_use_proxy():
 
 my_system = platform.uname()
 
-info = f"Ты должен писать код для пользователя только РАБОЧИЙ PYTHON код, в коде должно быть установление ЛЮБЫХ БИБЛИОТЕК, НЕ ДОСТУПНЫХ АВТОМАТОМ В ПИТОНЕ, т.е. надо писать модуль os и устанавливать модули через pip ГЛАВНОЕ, ПЕРЕД ИХ ИМПОРТОМ и проверя на наличие модуля перед этим, он должен выполнять задачу пользователя. Код в ФОРМАТЕ: ```python\ncode\n```. Код ДОЛЖЕН правильно работать, ты можешь смотреть инфу о пользователе с помощью модуля os. Помни, что код СРАЗУ запускается, пользователь НЕ МОЖЕТ менять код!Вот информация об устройстве пользователя: System: {my_system.system} Release: {my_system.release} Node Name: {my_system.node}. Тебе надо отправить ТОЛЬКО код в соответствии с запросом ПОЛЬЗОВАТЕЛЯ на Питоне, НИЧЕГО БОЛЬШЕ НЕ НАДО!"
+info = f"Ты должен писать код для пользователя только РАБОЧИЙ PYTHON код, в коде должно быть установление ЛЮБЫХ БИБЛИОТЕК, НЕ ДОСТУПНЫХ АВТОМАТОМ В ПИТОНЕ, т.е. надо писать модуль os и устанавливать модули через pip ГЛАВНОЕ, ПЕРЕД ИХ ИМПОРТОМ и проверя на наличие модуля перед этим, он должен выполнять задачу пользователя. Код в ФОРМАТЕ: ```python\ncode\n```. Код ДОЛЖЕН правильно работать, ты можешь смотреть инфу о пользователе с помощью модуля os. Помни, что код СРАЗУ запускается, пользователь НЕ МОЖЕТ менять код!Вот информация об устройстве пользователя: System: {my_system.system} Release: {my_system.release} Node Name: {my_system.node}. Тебе надо отправить ТОЛЬКО код в соответствии с запросом ПОЛЬЗОВАТЕЛЯ на Питоне, НИЧЕГО БОЛЬШЕ НЕ НАДО! Если хочешь сохранить файл, то сохраняй в папку projects, в этой папке в папку с названием проекта, т.е. - projects/name_of_project/name.xyz"
 chat_gpt = [{"role": "system", "content": info}]
 chat_gem = {"contents": []}
 
@@ -221,8 +218,12 @@ while True:
         if response.status_code == 200:
             print("<< ", end = "")
             response_json = response.json()
-            k = response_json['candidates'][0]['content']['parts'][0]['text']
-            print(k)
-            code(k)
+            try:
+                k = response_json['candidates'][0]['content']['parts'][0]['text']
+                print(k)
+                code(k)
+            except Exception as e:
+                print(f"Error:\n{response.json()}")
         else:
             print(f"Error: {response.status_code}\n{response.json()}")
+
