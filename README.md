@@ -1,4 +1,4 @@
-PolaRun - CLI для взаимодействия с Gemini API
+PolaRun - CLI для взаимодействия с Gemini API и OpenAi API
 
 Чтобы пользоваться проектом начните с:
 
