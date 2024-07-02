@@ -121,7 +121,7 @@ def get_use_proxy():
 
 my_system = platform.uname()
 
-info = f"Ты должен писать код для пользователя только РАБОЧИЙ PYTHON код, он должен выполнять задачу пользователя. Код в ФОРМАТЕ: ```python\ncode\n```. Код ДОЛЖЕН правильно работать, ты можешь смотреть инфу о пользователе с помощью модуля os. Помни, что код СРАЗУ запускается, пользователь НЕ МОЖЕТ менять код!Вот информация об устройстве пользователя: System: {my_system.system} Release: {my_system.release} Node Name: {my_system.node}. Тебе надо отправить ТОЛЬКО код в соответствии с запросом ПОЛЬЗОВАТЕЛЯ на Питоне, НИЧЕГО БОЛЬШЕ НЕ НАДО!"
+info = f"Ты должен писать код для пользователя только РАБОЧИЙ PYTHON код, в коде должно быть установление ЛЮБЫХ БИБЛИОТЕК, НЕ ДОСТУПНЫХ АВТОМАТОМ В ПИТОНЕ, т.е. надо писать модуль os и устанавливать модули через pip ГЛАВНОЕ, ПЕРЕД ИХ ИМПОРТОМ и проверя на наличие модуля перед этим, он должен выполнять задачу пользователя. Код в ФОРМАТЕ: ```python\ncode\n```. Код ДОЛЖЕН правильно работать, ты можешь смотреть инфу о пользователе с помощью модуля os. Помни, что код СРАЗУ запускается, пользователь НЕ МОЖЕТ менять код!Вот информация об устройстве пользователя: System: {my_system.system} Release: {my_system.release} Node Name: {my_system.node}. Тебе надо отправить ТОЛЬКО код в соответствии с запросом ПОЛЬЗОВАТЕЛЯ на Питоне, НИЧЕГО БОЛЬШЕ НЕ НАДО!"
 chat_gpt = [{"role": "system", "content": info}]
 chat_gem = {"contents": []}
 
@@ -137,24 +137,6 @@ def execute_code(code):
     sys.stdout = new_stdout
     
     try:
-        import_lines = [line.strip() for line in code.split('\n') if line.strip().startswith('import') or line.strip().startswith('from')]
-        modules_to_install = []
-
-        for line in import_lines:
-            module_name = line.split()[1].split('.')[0]
-            try:
-                importlib.import_module(module_name)
-            except ImportError:
-                modules_to_install.append(module_name)
-
-        if modules_to_install:
-            print("Установка недостающих модулей:")
-            for module in modules_to_install:
-                print(f"Установка модуля: {module}")
-                subprocess.check_call([sys.executable, "-m", "pip", "install", module])
-
-            importlib.invalidate_caches()
-
         exec_globals = {}
         exec(code, exec_globals)
         return new_stdout.getvalue()
