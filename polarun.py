@@ -39,6 +39,9 @@ if not os.path.exists(os.path.expanduser("~\\PolaRun") + '\\polarun.bat'):
     with open(os.path.expanduser("~\\PolaRun") + '\\polarun.bat', 'w') as f:
         f.write(f"""cd {os.path.expanduser("~\\PolaRun")}
 py {os.path.expanduser("~\\PolaRun") + '\\polarun.py'}""")
+    with open(os.path.expanduser("~") + '\\polarun.bat', 'w') as f:
+        f.write(f"""cd {os.path.expanduser("~")}
+py {os.path.expanduser("~\\PolaRun") + '\\polarun.py'}""")
     print("Файл polarun.bat создан.")
 
 def get_api_key():
