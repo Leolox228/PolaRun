@@ -225,3 +225,5 @@ while True:
             k = response_json['candidates'][0]['content']['parts'][0]['text']
             print(k)
             code(k)
+        else:
+            print(f"Error: {response.status_code}")
