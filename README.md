@@ -14,9 +14,13 @@ pip install -r requirements.txt
 ```
 
 Запускаем код:
-
+Если прокси не нужны:
 ```bah
 py polarun.py
+```
+Если нужны:
+```bah
+py polarun.py --proxy
 ```
 
 Далее добавим polarun в path:
