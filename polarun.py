@@ -160,6 +160,10 @@ def code(k):
                     "role": "user",
                     "content": "Результат выполнения кода:" + str(result)
                 })
+                chat_gem.append({
+                    "role": "user",
+                    "content": "Результат выполнения кода:" + str(result)
+                })
 
 args = parse_arguments()
 change_model1 = False
