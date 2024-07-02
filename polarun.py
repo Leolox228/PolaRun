@@ -160,7 +160,7 @@ def code(k):
                     "role": "user",
                     "content": "Результат выполнения кода:" + str(result)
                 })
-                chat_gem.append({
+                chat_gem['contents'].append({
                     "role": "user",
                     "content": "Результат выполнения кода:" + str(result)
                 })
