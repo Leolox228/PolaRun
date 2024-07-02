@@ -18,7 +18,5 @@ pip install -r requirements.txt
 py polarun.py
 ```
 
-Далее добавим polarun в path:
-```path
-setx path "%path%;polarun.bat"
-```
+Готово!
+Можно пользоваться прямо в cmd, просто написав polarun!
