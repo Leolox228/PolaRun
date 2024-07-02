@@ -26,6 +26,16 @@ if not os.path.exists(os.path.expanduser("~\\PolaRun") + '\\polarun.bat'):
     set_key('.env', 'model', v[model])
     os.environ['model'] = v[model]
     c = input("Использовать прокси? y/n:\n")
+    if (c == 'y'):
+        proxy = input("Введите ваши http/https прокси:\n")
+        set_key('.env', 'PROXY', proxy)
+        os.environ['PROXY'] = proxy
+        if c == 'y':
+            set_key('.env', 'USE_PROXY', '1')
+            os.environ['USE_PROXY'] = '1'
+        else:
+            set_key('.env', 'USE_PROXY', '0')
+            os.environ['USE_PROXY'] = '0'
     with open(os.path.expanduser("~\\PolaRun") + '\\polarun.bat', 'w') as f:
         if c == 'y':
             f.write(f"""cd {os.path.expanduser("~\\PolaRun")}
