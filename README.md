@@ -23,5 +23,3 @@ py polarun.py
 ```path
 setx path "%path%;polarun.bat"
 ```
-
-Если вам нужны proxy, то для их спользование пишите: polarun --proxy
