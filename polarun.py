@@ -214,9 +214,9 @@ while True:
             'https': proxy_url,
         }
         url = f'https://generativelanguage.googleapis.com/v1/models/{model}:generateContent?key={api_key}'
+        chat_gem["contents"].insert(len(chat_gem["contents"]), {"role": "user", "parts": {"text": user_input}})
         chat_gem_copy = chat_gem.copy()
-        chat_gem_copy["contents"].insert(len(chat_gem_copy["contents"]), {"role": "user", "parts": {"text": user_input}})
-        chat_gem_copy["contents"].insert(len(chat_gem_copy["contents"]) - 1, {"role": "user", "parts": {"text": info}})
+        chat_gem_copy["contents"].insert(len(chat_gem["contents"]) - 1, {"role": "user", "parts": {"text": info}})
         response = requests.post(url, headers=headers, json=chat_gem_copy, proxies=proxies, stream=True)
 
         if response.status_code == 200:
