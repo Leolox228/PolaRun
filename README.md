@@ -20,5 +20,5 @@ py polarun.py
 
 Далее добавим polarun в path:
 ```path
-setx -m path "%path%;polarun.bat"
+setx path "%path%;polarun.bat"
 ```
