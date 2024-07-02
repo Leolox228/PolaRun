@@ -160,10 +160,9 @@ def code(k):
                     "role": "user",
                     "content": "Результат выполнения кода:" + str(result)
                 })
-                chat_gem['contents'].append({
-                    "role": "user",
-                    "content": "Результат выполнения кода:" + str(result)
-                })
+                chat_gem['contents'].append(
+                     {"role": "user", "parts": {"text": "Результат выполнения кода:" + str(result)}}
+                )
 
 args = parse_arguments()
 change_model1 = False
@@ -226,4 +225,4 @@ while True:
             print(k)
             code(k)
         else:
-            print(f"Error: {response.status_code}")
+            print(f"Error: {response.status_code}\n{response.json()}")
