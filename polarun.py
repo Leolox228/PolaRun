@@ -37,11 +37,7 @@ if not os.path.exists(os.path.expanduser("~\\PolaRun") + '\\polarun.bat'):
             set_key('.env', 'USE_PROXY', '0')
             os.environ['USE_PROXY'] = '0'
     with open(os.path.expanduser("~\\PolaRun") + '\\polarun.bat', 'w') as f:
-        if c == 'y':
-            f.write(f"""cd {os.path.expanduser("~\\PolaRun")}
-py {os.path.expanduser("~\\PolaRun") + '\\polarun.py --proxy'}""")
-        else:
-            f.write(f"""cd {os.path.expanduser("~\\PolaRun")}
+        f.write(f"""cd {os.path.expanduser("~\\PolaRun")}
 py {os.path.expanduser("~\\PolaRun") + '\\polarun.py'}""")
     print("Файл polarun.bat создан.")
 
