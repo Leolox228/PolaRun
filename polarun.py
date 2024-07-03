@@ -148,7 +148,9 @@ def code(k):
     code_blocks = re.findall(r'```(?:python)?\s*(.*?)```', k, re.DOTALL)
     if code_blocks:
         for i, code in enumerate(code_blocks):
-            run_code = input(f"Выполнить код? (y/n): ")
+            run_code = "t"
+            while run_code not in "yn":
+                run_code = input(f"Выполнить код? (y/n): ")
             if run_code.lower() == 'y':
                 result = execute_code(code)
                 print("Результат выполнения кода:")
@@ -226,4 +228,3 @@ while True:
                 print(f"Error:\n{response.json()}")
         else:
             print(f"Error: {response.status_code}\n{response.json()}")
-
